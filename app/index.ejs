@@ -2,36 +2,30 @@
 
 <html ng-app="app" lang="en">
 
-<head>
-			<meta charset="UTF-8">
-			<title>Title</title>
-			<link rel="stylesheet" type="text/css" href="styles.css">
-</head>
+	<head>
+		<meta charset="UTF-8">
+		<title>Title</title>
+		<link rel="stylesheet" type="text/css" href="styles.css">
+	</head>
 
-<body ng-controller="MainController as mainCtrl" ng-cloak>
+	<body ng-controller="MainController as mainCtrl" ng-cloak>
 
-<div class="btn btn-default"  ng-click="mainCtrl.gotoPage('home')"> goto HOME</div>
-<div class="btn btn-default"  ng-click="mainCtrl.gotoPage('about')"> goto about</div>
+		<h1><%- version %> the is injected through our build task</h1>
 
-<%- version %>
+		<div class="md-button md-raised" ng-click="mainCtrl.gotoPage('home')"> goto HOME</div>
+		<div class="md-button md-raised" ng-click="mainCtrl.gotoPage('about')"> goto about</div>
 
-<md-sidenav layout="column" class="sidenav1" md-is-locked-open='true'>
-	SideNav
-</md-sidenav>
-<div simple-directive></div>
-<div my-directive></div>
-<div style="background-color: cornsilk">
+		<md-sidenav layout="column" class="sidenav1" md-is-locked-open='true'>
+			SideNav
+		</md-sidenav>
+		<div simple-directive></div>
+		<div my-directive></div>
+		<div style="background-color: cornsilk">
 			<div ui-view></div>
-</div>
+		</div>
 
 
+		<script type="text/javascript" src="app.js"></script>
 
-
-
-
-
-
-<script type="text/javascript" src="app.js"></script>
-
-</body>
+	</body>
 </html>

@@ -26,3 +26,9 @@ module.exports = {
 	  
 }
 
+/*
+'styles': {
+	  'files' : ['app/css/!*.less', 'app/src/modules/!**!/!*.less'],
+			'src' : 'app/css/styles.less',
+			'dest': 'www/css'
+},*/
