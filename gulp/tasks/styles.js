@@ -21,6 +21,7 @@ var rename = require('gulp-rename');
 
 gulp.task('styles', function () {
 
+	  
 	  return gulp.src(config.styles.input)
 			.pipe(plumber(function(error) {
 				  gutil.log(gutil.colors.red(error.message));

@@ -8,18 +8,26 @@ var buffer = require('vinyl-buffer');
 var gutil = require('gulp-util');
 var sourcemaps = require('gulp-sourcemaps');
 var assign = require('lodash').assign;
-
+var ngAnnotate   = require('browserify-ngannotate');
 var tsify = require('tsify');
+var config = require('../config');
 
 // add custom browserify options here
 var customOpts = {
 	entries: ['./app/src/app.ts'],
-	debug: true
+	debug: !config.productionBuild // if production build is true, we don't want to debug
 };
 
 var opts = assign({}, watchify.args, customOpts);
 
+
 var b = watchify(browserify(opts));
+
+	// if we want to use standard es5, we need to handle dependency injection without static $inject
+	b.transform(ngAnnotate);
+
+	// if we want to use a bower module
+	//b.transform(debowerify);
 
 	// Add the typings file so typescript knows the npm modules we are using
 	b.add('typings/main.d.ts');
@@ -32,7 +40,7 @@ var b = watchify(browserify(opts));
 			"experimentalDecorators": true,
 			"emitDecoratorMetadata": true,
 			"declaration": true,
-			"noImplicitAny": true,
+			"noImplicitAny": false,
 			"removeComments": true,
 			"noLib": false,
 			"preserveConstEnums": true,

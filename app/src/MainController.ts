@@ -24,7 +24,6 @@ export class MainController {
         this.$state.go(value)
         //this.$state.go('home', null);
 
-    }
-    
+    }   
     
 }

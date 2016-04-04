@@ -2,11 +2,6 @@
  * Created by Fantastisk on 27-03-2016.
  */
 
-import * as angular from 'angular';
-/*import {routes} from './routes'
-import {CONSTANTS} from './constants'*/
-
-
 
 export function config($stateProvider:any, $urlRouterProvider:any, routes:any, CONSTANTS:any, $compileProvider:any ) {
 

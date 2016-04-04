@@ -7,11 +7,13 @@ import * as angular from 'angular';
 import {HomeController}  from './HomeController';
 import {simpleDirective} from './simpleDirective';
 import {MyDirective} from './MyDirective'
+import {HomeService} from './HomeService'
 
 
 export default angular.module('app.home',[])
     .controller('HomeController', HomeController)
     .directive('simpleDirective', simpleDirective)
-    .directive('myDirective', MyDirective.Factory());
+    .directive('myDirective', MyDirective.Factory())
+    .service('HomeService', HomeService);
 
 

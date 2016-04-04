@@ -1,8 +1,8 @@
 /**
  * Created by @author @ddennis - ddennis.dk aka fantastisk.dk/works aka meresukker.dk on 27-03-2016.
  */
-'use strict';
 
+'use strict';
 
 var gulp           = require('gulp');
 var browserSync  = require('browser-sync').get('app');
@@ -12,9 +12,10 @@ var rename = require('gulp-rename');
 var handleErrors = require('./handleErrors');
 var fs = require('fs');
 
+// get the version number from packagejson
 var versionNumber = require('../../package.json').version;
 
-
+// Views task
 gulp.task('markup', function() {
 
 	  gulp.src('./app/index.ejs')
@@ -25,5 +26,12 @@ gulp.task('markup', function() {
 			.pipe(gulp.dest('./dist' ))
 			.pipe(gulpif(browserSync.active , browserSync.reload({ stream: true, once: true })));
 
-	    
+
+	  /**
+	   * Put the views into the templates module,
+	   */
+	  return gulp.src('./app/src/modules/**/*.html')
+			.pipe(gulp.dest('dist/modules/' ))
+			.pipe(gulpif(browserSync.active, browserSync.reload({ stream: true, once: true })));
+
 });

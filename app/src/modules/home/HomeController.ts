@@ -3,19 +3,49 @@
  */
 
 
+/**
+ * @ngInject
+ */
+export var HomeController = function (CONSTANTS, HomeService) {
+
+    var vm = this;
+    vm.myName = "Name from home controlller";
+
+    vm.myfunc = function () {
+        return "la la la"
+    };
+
+
+    vm.loadData = function () {
+
+        HomeService.loadData()
+    }
+    
+    
+
+
+};
+
+
+
+
+
+/*
 export class HomeController {
 
     public name:string = "Home ctrl";
-    
+    private myTest:any;
 
-    //static $inject = ['SomeFactory'];
+    static $inject = ['SomeFactory'];
 
     constructor() {
+        this.myTest = 100
     }
 
 
     click(){
-        console.log (" homeController.ts > CLICKCK = ");
+        this.myTest = 200
+
     }
 
     getName(){
@@ -23,4 +53,5 @@ export class HomeController {
     };
 
 }
+*/
 
