@@ -15,6 +15,8 @@ import 'angular-material';
  * import specific files used in our setup
  */
 import {MainController} from './MainController';
+import {MenuController} from "./modules/sidemenu/MenuController";
+import {navigator} from "./utils/navigator";
 import {CONSTANTS} from './constants';
 import {routes} from './routes'
 import {config} from './config';
@@ -36,7 +38,8 @@ export let app = angular.module('app',
         'app.about'
     ]
 ).controller('MainController', MainController)
+    .controller('MenuController', MenuController)
+    .service('navigator', navigator)
     .constant('CONSTANTS', CONSTANTS)
     .constant('routes', routes)
-    .config(config);
-
+    .config(config)

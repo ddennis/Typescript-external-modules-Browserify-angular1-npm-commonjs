@@ -18,6 +18,8 @@ var versionNumber = require('../../package.json').version;
 // Views task
 gulp.task('markup', function() {
 
+	  console.log (" markup.js > browserSync.active = " , browserSync.active);
+	  
 	  gulp.src('./app/index.ejs')
 			.pipe(ejs({
 				  version: versionNumber

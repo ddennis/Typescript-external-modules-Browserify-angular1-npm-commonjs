@@ -22,7 +22,6 @@ var rename = require('gulp-rename');
 
 gulp.task('styles', function () {
 
-	  console.log (" styles.js > config.productionBuild = " , config.productionBuild);
 	  return gulp.src(config.styles.input)
 
 			.pipe(plumber(function(error) {
@@ -38,7 +37,8 @@ gulp.task('styles', function () {
 			.on('error', handleErrors)
 			.pipe(rename('styles.css'))
 			.pipe(gulp.dest(config.styles.output))
-			.pipe(browserSync.reload({ stream: true }))
+			//.pipe(browserSync.reload({ stream: true }))
+			.pipe(gulpif(browserSync.active , browserSync.reload({ stream: true, once: true })));
 			//.pipe(gulpif(config.productionBuild == false , browserSync.reload({ stream: true })))
 
 });

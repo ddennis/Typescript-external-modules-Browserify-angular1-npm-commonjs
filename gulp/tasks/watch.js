@@ -5,6 +5,7 @@
 
 var gulp  = require("gulp");
 var browserSync  = require('browser-sync').get('app');
+var config = require('../config');
 
 //******************************************************************************
 	  //gulp.task("watch", [ 'markup', 'browserifyTypescript'], function () {
@@ -18,4 +19,5 @@ gulp.task("watch", function () {
 
 	  gulp.watch( ['app/css/*.less', 'app/src/modules/**/*.less'], ['styles']);
 	  gulp.watch( ['app/index.ejs', 'app/src/modules/**/*.ejs', 'app/src/modules/**/*.html'], ['markup']);
+
 });

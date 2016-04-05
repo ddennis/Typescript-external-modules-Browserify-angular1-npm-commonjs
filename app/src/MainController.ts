@@ -2,16 +2,20 @@ export class MainController {
 
     public name:string = "this is name from mainController";
 
+    static $inject = ['$state', '$mdSidenav'];
 
-    static $inject = ['$state'];
-
-
-    constructor(public $state:any) {
+    constructor(public $state:any, public $mdSidenav) {
         this.$state = $state;
+        this.$mdSidenav = $mdSidenav;
         console.log(" MainController.ts > ssasdasdadf = ");
     }
 
     click() {
+    }
+
+    toggleList(){
+        console.log (" MainController.ts > toggle = "        );
+        this.$mdSidenav('left').toggle();
     }
 
 
