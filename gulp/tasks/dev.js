@@ -4,23 +4,32 @@
 
 var gulp        = require('gulp');
 var runSequence = require('run-sequence');
-var gutil = require('gulp-util');
+var gutil       = require('gulp-util');
 var config      = require('../config');
+var browserSync = require('browser-sync').create('app');
 
-
-gulp.task('dev', function(callback) {
+gulp.task('dev', function (callback) {
 
 
 	  config.productionBuild = false;
 
+	  console.log (" dev.js > config.outputFolder = " , config.outputFolder);
+	  
+	  browserSync.init({
+			server: config.outputFolder
+
+	  });
+
+
 	  // Log to the console
-	  console.log (" dev.js > ------------------------------------------");
-	  gutil.log( gutil.colors.red("dev.js > IS PRODUCTION BUILD = " ), gutil.colors.blue( config.productionBuild  ));
-	  console.log (" dev.js > ------------------------------------------");
+	  console.log(" dev.js > ------------------------------------------");
+	  //gutil.log(gutil.colors.red("dev.js > IS PRODUCTION BUILD = "), gutil.colors.blue(config.productionBuild));
+	  console.log(" dev.js > ------------------------------------------");
 
-	  callback = callback || function() {};
+	  callback = callback || function () {};
 
-	  runSequence(['markup', 'browserifyTypescript', 'styles', 'assets'], 'browserSync', 'watch')
+	  //runSequence(['markup', 'browserifyTypescript', 'styles', 'assets'], 'browserSync', 'watch')
+	  runSequence(['markup'], 'watch')
 	  //runSequence(['markup', 'browserifyTypescript'], 'browserSync','watch' )
 
 });

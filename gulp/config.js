@@ -4,7 +4,6 @@
 
 var path = require('path');
 
-
 var outputFolder = './dist';
 var rootAppFolder = './app';
 

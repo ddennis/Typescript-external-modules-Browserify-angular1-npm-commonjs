@@ -3,7 +3,7 @@
  */
 'use strict';
 
-var browserSync  = require('browser-sync').get('app');
+var browserSync  = require('browser-sync') //.get('app');
 var config       = require('../config');
 var gulp         = require('gulp');
 var gulpif       = require('gulp-if');
