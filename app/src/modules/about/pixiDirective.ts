@@ -31,7 +31,7 @@ export class PixiDirective  {
     public link:(scope:any , element:ng.IAugmentedJQuery, attrs:ng.IAttributes) => void;
 
     //public template = '<div> pixi something</div>';
-
+    
     // create isolate scope if needed
     //public scope = {};
 
@@ -52,10 +52,21 @@ export class PixiDirective  {
                 console.log(" PixiDirective.ts > YES YES  = ");
             })
 
+
+            scope.$on('$destroy', function() {
+                console.log("destroy");
+                pixiView.destroy()
+
+            });
+
+
         };
     }
 
-    
+    public destroy() {
+        console.log (" pixiDirective.ts > was destoryed = ");
+
+    }
 
     public static Factory() {
         var directive = (/*list of dependencies*/) => {

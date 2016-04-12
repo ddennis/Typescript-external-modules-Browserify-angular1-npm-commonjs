@@ -3,7 +3,9 @@
  */
 
 
-export function config($stateProvider:any, $urlRouterProvider:any, routes:any, CONSTANTS:any, $compileProvider:any ) {
+
+
+export function config($stateProvider:any, $urlRouterProvider:any, routes:any, CONSTANTS:any, $compileProvider:any , $mdThemingProvider, $mdIconProvider) {
 
     var arr = routes.pages;
 
@@ -26,9 +28,23 @@ export function config($stateProvider:any, $urlRouterProvider:any, routes:any, C
 
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/home');
+
+
+    $mdIconProvider
+        .defaultIconSet("./svg/avatars.svg", 128)
+        .icon("menu"       , "./svg/menu.svg"        , 24)
+        .icon("share"      , "./svg/share.svg"       , 24)
+        .icon("google_plus", "./svg/google_plus.svg" , 512)
+        .icon("hangouts"   , "./svg/hangouts.svg"    , 512)
+        .icon("twitter"    , "./svg/twitter.svg"     , 512)
+        .icon("phone"      , "./svg/phone.svg"       , 512);
+    $mdThemingProvider.theme('default')
+       /* .primaryPalette('brown')
+        .accentPalette('red');*/
+
 }
 
-config.$inject = ['$stateProvider', '$urlRouterProvider', 'routes', 'CONSTANTS', '$compileProvider'];
+config.$inject = ['$stateProvider', '$urlRouterProvider', 'routes', 'CONSTANTS', '$compileProvider', '$mdThemingProvider', '$mdIconProvider'];
 //config.$inject = ['$stateProvider' , 'routes'];
 
 

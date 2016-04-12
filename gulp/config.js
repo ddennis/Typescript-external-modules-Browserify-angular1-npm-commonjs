@@ -4,7 +4,6 @@
 
 var path = require('path');
 
-
 var outputFolder = './dist';
 var rootAppFolder = './app';
 
@@ -15,6 +14,7 @@ module.exports = {
 	  outputFolder: outputFolder ,
 
 	  styles:{
+			lessFiles: ['app/css/*.less', 'app/src/modules/**/*.less'],
 			input: path.resolve(rootAppFolder, './css/styles.less'),
 			output: outputFolder
 	  },

@@ -9,8 +9,12 @@ export var routes = {
 
     "menu": [
         {
-            title: "Some Title",
+            title: "Home",
             state: CONSTANTS.PAGES.HOME
+        },
+        {
+            title: "About",
+            state: CONSTANTS.PAGES.ABOUT
         }
 
     ],

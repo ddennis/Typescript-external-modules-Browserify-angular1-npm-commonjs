@@ -7,6 +7,7 @@ var runSequence = require('run-sequence');
 var config = require('../config');
 var browserSync = require('browser-sync').create('app');
 var config = require('../config');
+//var htmlInjector = require("bs-html-injector");
 
 gulp.task('dev', ['clean'], function(callback) {
 
@@ -17,5 +18,5 @@ gulp.task('dev', ['clean'], function(callback) {
 	  config.productionBuild = false;
 	  callback = callback || function() {};
 
-	  runSequence(['markup', 'browserifyTypescript', 'styles'], 'watch')
+	  runSequence(['markup', 'browserifyTypescript', 'styles' ,'assets'], 'watch')
 });
