@@ -8,6 +8,7 @@ export class MainController {
         this.$state = $state;
         this.$mdSidenav = $mdSidenav;
         console.log(" MainController.ts > ssasdasdadf = ");
+        
     }
 
     click() {

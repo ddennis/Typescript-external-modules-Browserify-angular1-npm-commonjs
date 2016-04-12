@@ -15,16 +15,8 @@ export class MenuController  {
         this.pages = routes.menu;
     }
 
-
     setSelected(index:number){
-        
-        console.log (" MenuController.ts > index = " , index);
-
-        console.log (" MenuController.ts > this.pages = " , this.pages);
-        
-        
         var state = this.pages[index]
-        console.log (" MenuController.ts > state  = " , state );
         this.navigator.go( state )
 
     }

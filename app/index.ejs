@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html ng-app="app" lang="en">
+
 
 <head>
 	<meta charset="UTF-8">
@@ -8,18 +9,32 @@
 	<link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 
-<body>
+<body ng-controller="MainController as mainCtrl" layout="column">
 
-<div class="container-fluid">
-	<h1>Version <%- version %> </h1>
-	The version number is coming from the package.json file and rendered with ejs in the build process
+<section layout="row" flex>
+	<!--The left menu-->
+	<%- include ./src/modules/sidemenu/sideMenuLeft.html %>
 
-	asdasd
+	<div flex layout="column" tabIndex="-1" role="main" class="md-whiteframe-z2">
 
-	<div class="singerContainer">
-		<!--the content will be appende here-->
+		<md-toolbar layout="row" class="md-whiteframe-z1">
+			<md-button id="main" class="menu" hide-gt-sm ng-click="mainCtrl.toggleList()" aria-label="Show User List">
+				<md-icon md-svg-icon="menu"></md-icon>
+			</md-button>
+
+			<h3>Typescript external modules with Angular</h3>
+		</md-toolbar>
+
+
+		<md-content flex id="content" ui-view>
+			<!--<div ui-view></div>-->
+		</md-content>
+
 	</div>
-</div>
+
+
+</section>
+
 <script type="text/javascript" src="app.js"></script>
 
 </body>

@@ -31,6 +31,7 @@ import './modules/home'
 import './modules/about'
 
 
+
 export let app = angular.module('app',
     [
         'ui.router',
@@ -45,3 +46,5 @@ export let app = angular.module('app',
     .constant('CONSTANTS', CONSTANTS)
     .constant('routes', routes)
     .config(config);
+
+

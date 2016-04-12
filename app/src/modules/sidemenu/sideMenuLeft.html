@@ -5,20 +5,19 @@
 
 				md-whiteframe="4">
 			<md-toolbar class="md-theme-indigo">
-						<h1 class="md-toolbar-tools">Sidenav Left</h1>
+						<h1 class="md-toolbar-tools">Menu</h1>
 			</md-toolbar>
 
-			<md-content layout-padding ng-controller="MenuController as menuCtrl">
 
+
+
+			<md-content layout-padding ng-controller="MenuController as menuCtrl">
 						<md-list>
-									<md-list-item ng-repeat="page in menuCtrl.pages">
+									<md-list-item ng-repeat="page in menuCtrl.pages" class="test">
 												<md-button ng-click="menuCtrl.setSelected($index)" ng-class="{'selected' : it === ul.selected }">
 															{{page.title}}
 												</md-button>
 									</md-list-item>
 						</md-list>
-
-
 			</md-content>
-
 </md-sidenav>

@@ -14,7 +14,6 @@ var browserSync = require('browser-sync')//.get('app');
 gulp.task('assets', function() {
 
 	  return gulp.src('./app/assets/**/*')
-
 			.pipe(changed('./app/assets/**/*')) // Ignore unchanged files
 			//.pipe(gulpif(global.isProd, imagemin())) // Optimize
 			.pipe(gulp.dest('./dist'))

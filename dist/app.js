@@ -146,8 +146,15 @@ var PixiDirective = (function () {
             element.on('tap click', function () {
                 console.log(" PixiDirective.ts > YES YES  = ");
             });
+            scope.$on('$destroy', function () {
+                console.log("destroy");
+                pixiView.destroy();
+            });
         };
     }
+    PixiDirective.prototype.destroy = function () {
+        console.log(" pixiDirective.ts > was destoryed = ");
+    };
     PixiDirective.Factory = function () {
         var directive = function () {
             return new PixiDirective();
@@ -167,6 +174,8 @@ var PixiView = (function () {
             _this.renderer.render(_this.stage);
             requestAnimationFrame(_this.animate);
         };
+        this._w = _w;
+        this._h = _h;
         var options = {
             antialias: false,
             backgroundColor: 0xFF00CC,
@@ -178,8 +187,24 @@ var PixiView = (function () {
         this.renderer = PIXI.autoDetectRenderer(_w, _h, options);
         element.append(this.renderer.view);
         this.stage = new PIXI.Container();
+        this.text = new PIXI.Text('text on canvas', { font: '20px arial', fill: 'white', align: 'left' });
+        this.moveText();
+        this.stage.addChild(this.text);
         this.animate();
     }
+    PixiView.prototype.moveText = function () {
+        var _this = this;
+        this.text.x = Math.random() * this._w - 50;
+        this.text.y = Math.random() * this._h - 10;
+        this.timer = setTimeout(function () {
+            console.log(" PixiView.ts tick= ");
+            _this.moveText();
+        }, 1000);
+    };
+    PixiView.prototype.destroy = function () {
+        clearTimeout(this.timer);
+        console.log(" PixiView.ts > whas destroyed = ");
+    };
     return PixiView;
 }());
 exports.PixiView = PixiView;
@@ -283,10 +308,7 @@ var MenuController = (function () {
         this.pages = routes.menu;
     }
     MenuController.prototype.setSelected = function (index) {
-        console.log(" MenuController.ts > index = ", index);
-        console.log(" MenuController.ts > this.pages = ", this.pages);
         var state = this.pages[index];
-        console.log(" MenuController.ts > state  = ", state);
         this.navigator.go(state);
     };
     MenuController.prototype.closeLeft = function () {
@@ -353,7 +375,6 @@ var navigator = (function () {
         this.$state = $state;
     }
     navigator.prototype.go = function (menuItem) {
-        console.log(" navigator.ts > state = ", menuItem.state);
         this.$state.go(menuItem.state);
     };
     navigator.$inject = ['$state'];

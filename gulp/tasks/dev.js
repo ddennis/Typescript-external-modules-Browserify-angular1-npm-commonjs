@@ -2,34 +2,21 @@
  * Created by @author @ddennis - ddennis.dk aka fantastisk.dk/works aka meresukker.dk on 01-04-2016.
  */
 
-var gulp        = require('gulp');
+var gulp = require('gulp');
 var runSequence = require('run-sequence');
-var gutil       = require('gulp-util');
-var config      = require('../config');
+var config = require('../config');
 var browserSync = require('browser-sync').create('app');
+var config = require('../config');
+//var htmlInjector = require("bs-html-injector");
 
-gulp.task('dev', function (callback) {
+gulp.task('dev', ['clean'], function(callback) {
 
-
-	  config.productionBuild = false;
-
-	  console.log (" dev.js > config.outputFolder = " , config.outputFolder);
-	  
 	  browserSync.init({
 			server: config.outputFolder
-
 	  });
 
+	  config.productionBuild = false;
+	  callback = callback || function() {};
 
-	  // Log to the console
-	  console.log(" dev.js > ------------------------------------------");
-	  //gutil.log(gutil.colors.red("dev.js > IS PRODUCTION BUILD = "), gutil.colors.blue(config.productionBuild));
-	  console.log(" dev.js > ------------------------------------------");
-
-	  callback = callback || function () {};
-
-	  //runSequence(['markup', 'browserifyTypescript', 'styles', 'assets'], 'browserSync', 'watch')
-	  runSequence(['markup'], 'watch')
-	  //runSequence(['markup', 'browserifyTypescript'], 'browserSync','watch' )
-
+	  runSequence(['markup', 'browserifyTypescript', 'styles' ,'assets'], 'watch')
 });
